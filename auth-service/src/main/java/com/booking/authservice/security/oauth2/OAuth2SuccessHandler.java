@@ -1,15 +1,16 @@
+
 package com.booking.authservice.security.oauth2;
 
 import com.booking.authservice.model.Role;
 import com.booking.authservice.model.User;
 import com.booking.authservice.repository.UserRepository;
 import com.booking.authservice.security.jwt.JwtUtils;
+import com.booking.authservice.service.UserService;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
 import org.springframework.security.oauth2.core.user.DefaultOAuth2User;
 import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
@@ -27,7 +28,7 @@ public class OAuth2SuccessHandler extends SavedRequestAwareAuthenticationSuccess
 
     private final UserRepository userRepository;
     private final JwtUtils jwtUtils;
-    private final PasswordEncoder passwordEncoder;
+    private final UserService userService;
 
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
@@ -47,16 +48,8 @@ public class OAuth2SuccessHandler extends SavedRequestAwareAuthenticationSuccess
         User user;
         
         if (userOptional.isEmpty()) {
-            // Create new user if not exists
-            user = User.builder()
-                    .username(email.split("@")[0]) // Generate username from email
-                    .email(email)
-                    .password(passwordEncoder.encode(UUID.randomUUID().toString())) // Random password
-                    .googleId(googleId)
-                    .roles(Collections.singleton(Role.USER))
-                    .build();
-            
-            userRepository.save(user);
+            // Create new user if not exists using the UserService
+            user = userService.createOAuth2User(email, googleId);
         } else {
             user = userOptional.get();
         }
