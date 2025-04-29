@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Expense Tracking and Budgeting App.iml" filepath="$PROJECT_DIR$/Expense Tracking and Budgeting App.iml" />
+      <module fileurl="file://$PROJECT_DIR$/frontend-angular/frontend-angular.iml" filepath="$PROJECT_DIR$/frontend-angular/frontend-angular.iml" />
     </modules>
   </component>
 </project>

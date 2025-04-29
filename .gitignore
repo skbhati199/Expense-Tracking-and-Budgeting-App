@@ -1,0 +1,48 @@
+# Java/Maven
+**/.mvn/
+**/target/
+
+# Gradle
+**/.gradle/
+**/build/
+
+# Node.js
+frontend-service/node_modules/
+frontend-service/build/
+
+# IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# VSCode
+.vscode/
+
+# MacOS
+.DS_Store
+
+# Logs
+*.log
+
+# System files
+Thumbs.db
+
+# OS generated
+ehthumbs.db
+Desktop.ini
+
+# Compiled class files
+*.class
+
+# Temporary files
+*.swp
+*.swo
+*~
+
+# Environment files
+.env
+.env.*
+
+# Project-specific
+TODO.md

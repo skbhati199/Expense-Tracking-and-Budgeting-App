@@ -5,6 +5,20 @@
       <GradleProjectSettings>
         <option name="externalProjectPath" value="$PROJECT_DIR$/notification-service" />
         <option name="gradleJvm" value="22" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/notification-service" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/reporting-service" />
+        <option name="gradleJvm" value="22" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/reporting-service" />
+          </set>
+        </option>
       </GradleProjectSettings>
     </option>
   </component>
